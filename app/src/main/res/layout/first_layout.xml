@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,29 +11,78 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello SJTU"
+        android:textColor="#33ccff"
+        android:textAlignment="center"
+        android:textSize="100px"
         android:layout_marginTop="500px"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button1"
+    <EditText
+        android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button1"
-        android:layout_marginTop="500px"
-        app:layout_constraintTop_toBottomOf="@id/textview1"/>
+        android:hint="Type something here"
+        android:maxLines="2"
+        app:layout_constraintTop_toBottomOf="@id/textview1" />
 
-    <Button
-        android:id="@+id/startNormalActivity"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start NormalActivity"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintTop_toBottomOf="@id/editText1"/>
 
-    <Button
-        android:id="@+id/startDialogActivity"
+    <ProgressBar
+        android:id="@+id/progressBar01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start DialogActivity"
-        app:layout_constraintTop_toBottomOf="@+id/startNormalActivity" />
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        app:layout_constraintTop_toBottomOf="@id/imageView1"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/progressBar01">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button1"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/startNormalActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NormalActivity"
+            android:textAllCaps="false"
+            android:layout_gravity="bottom"/>
+
+        <Button
+            android:id="@+id/startDialogActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="Start DialogActivity"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
