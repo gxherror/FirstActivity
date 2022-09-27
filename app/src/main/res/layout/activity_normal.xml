@@ -5,8 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NormalActivity">
-    <TextView
+
+    <top.xherror.first_activity.TitleLayout
+        android:id="@+id/titleChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is a normal activity"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewChat"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        app:layout_constraintTop_toBottomOf="@id/titleChat"/>
+
+    <LinearLayout
+        android:id="@+id/sendWidget"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <EditText
+            android:hint="message to send"
+            android:id="@+id/editTextSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SEND"/>
+
+    </LinearLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

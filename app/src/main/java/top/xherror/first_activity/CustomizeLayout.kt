@@ -33,6 +33,11 @@ class TitleLayout(context:Context,attr:AttributeSet) :LinearLayout(context,attr)
 
 class Fruit(val name:String,val imageId :Int)
 
+/*
+*   speaker:"self" or "other"
+ */
+class Message(val message:String,val speaker :String)
+
 class FruitAdapterDeprecated(activity: Activity,val resourceId:Int,data:List<Fruit>):ArrayAdapter<Fruit>(activity,resourceId,data){
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view:View
@@ -93,3 +98,49 @@ class FruitAdapter(val fruitList: List<Fruit>) : RecyclerView.Adapter<FruitAdapt
 
     override fun getItemCount() = fruitList.size
 }
+
+class ChatAdapter(private val avatarLeftId:Int,private val avatarRightId: Int,private val userNameLeft :String,private val userNameRight :String ,private val chatList: List<Message>)
+    : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        val avatarLeft: ImageView = view.findViewById(R.id.avatarLeft)
+        val userNameLeft: TextView = view.findViewById(R.id.userNameLeft)
+        val messageLeft:TextView=view.findViewById(R.id.messageLeft)
+        val widgetLeft:ViewGroup=view.findViewById(R.id.widgetLeft)
+        val avatarRight: ImageView = view.findViewById(R.id.avatarRight)
+        val userNameRight: TextView = view.findViewById(R.id.userNameRight)
+        val messageRight:TextView=view.findViewById(R.id.messageRight)
+        val widgetRight:ViewGroup=view.findViewById(R.id.widgetRight)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.chat_message, parent, false)
+        val viewHolder = ViewHolder(view)
+        viewHolder.avatarLeft.setImageResource(avatarLeftId)
+        viewHolder.avatarRight.setImageResource(avatarRightId)
+        viewHolder.userNameLeft.text=userNameLeft
+        viewHolder.userNameRight.text=userNameRight
+        return viewHolder
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val message = chatList[position]
+        when(message.speaker){
+            "self"-> {
+                holder.widgetLeft.visibility=View.GONE
+                holder.widgetRight.visibility=View.VISIBLE
+                holder.messageRight.text=message.message
+            }
+            "other"-> {
+                holder.widgetRight.visibility = View.GONE
+                holder.widgetLeft.visibility = View.VISIBLE
+                holder.messageLeft.text = message.message
+            }
+        }
+
+    }
+
+    override fun getItemCount() = chatList.size
+}
+

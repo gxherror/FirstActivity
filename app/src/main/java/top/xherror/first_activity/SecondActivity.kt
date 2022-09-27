@@ -17,7 +17,6 @@ class SecondActivity : BaseActivity() {
         fruitlist.add(Fruit("Banana",R.drawable.banana))
         fruitlist.add(Fruit("Orange",R.drawable.orange))
         fruitlist.add(Fruit("Peach",R.drawable.peach))
-        fruitlist.add(Fruit("Kiwi",R.drawable.kiwi))
     }
 
     companion object {
@@ -44,6 +43,7 @@ class SecondActivity : BaseActivity() {
         //layoutManager.orientation=LinearLayoutManager.HORIZONTAL
         binding.recyclerView1.layoutManager=layoutManager
         binding.recyclerView1.adapter=FruitAdapter(fruitlist)
+
         binding.button2.setOnClickListener {
 
             //val intent = Intent(this,NormalActivity::class.java)
