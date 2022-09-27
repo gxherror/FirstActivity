@@ -78,13 +78,28 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="to fragment activity"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical"
         android:background="@drawable/speechballoonright"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout1"/>
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2"/>
 
     <ListView
         android:id="@+id/listView1"

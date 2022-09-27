@@ -1,7 +1,10 @@
 package top.xherror.first_activity
 
 import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,7 +25,7 @@ import top.xherror.first_activity.databinding.FirstLayoutBinding
 class FirstActivity : BaseActivity(),View.OnClickListener{
     private val tag="MainActivity"
     private val fruitlist=ArrayList<Fruit>()
-
+    lateinit var timeChangeReceiver: TimeChangeReceiver
     private fun initFruits(){
         fruitlist.add(Fruit("Apple",R.drawable.apple))
         fruitlist.add(Fruit("Banana",R.drawable.banana))
@@ -32,6 +35,10 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
         super.onCreate(savedInstanceState)
         Log.d(tag,this.toString())
         Log.d(tag,"$taskId")
+        val intentFilter =IntentFilter()
+        intentFilter.addAction("android.intent.action.TIME_TICK")
+        timeChangeReceiver=TimeChangeReceiver()
+        registerReceiver(timeChangeReceiver,intentFilter)
         //setContentView(R.layout.first_layout)
         val binding = FirstLayoutBinding.inflate(layoutInflater) //FirstLayoutBinding bind to name
         setContentView(binding.root)
@@ -98,12 +105,19 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
             //finish()
         }
 
+        binding.button3.setOnClickListener {
+            val intent=Intent(this,FragmentActivity::class.java)
+            startActivity(intent)
+        }
+
         val toNormalActivity= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             when(it.resultCode){
                 RESULT_OK -> {
+                    Log.d("data_return",it.data.toString())
                     val data=it.data?.getStringExtra("data_return")
-                    Log.d("NormalActivity","return data is $data")
+                    Log.d("data_return","return data is $data")
                 }
+                else->{Log.d("data_return",it.resultCode.toString())}
             }
         }
         binding.startNormalActivity.setOnClickListener {
@@ -143,6 +157,12 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
         //finish()
     }
 
+    inner class TimeChangeReceiver:BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            Toast.makeText(context,"Time has changed",Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         Log.d(tag,"onStart")
@@ -166,6 +186,7 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
     override fun onDestroy() {
         super.onDestroy()
         Log.d(tag,"onDestroy")
+        unregisterReceiver(timeChangeReceiver)
     }
 
     override fun onRestart() {

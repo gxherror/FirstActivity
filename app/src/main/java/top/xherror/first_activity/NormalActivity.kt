@@ -1,6 +1,7 @@
 package top.xherror.first_activity
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -46,6 +47,11 @@ class NormalActivity : BaseActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        val data=intent.getStringExtra("extra_data")
+        Log.d("extra_data",data.toString())
+        val intent = Intent()
+        intent.putExtra("data_return", "Hello FirstActivity")
+        setResult(RESULT_OK, intent)
         ActivityCollector.finishAll()
         //android.os.Process.killProcess(android.os.Process.myPid())
         //finish()
@@ -53,6 +59,9 @@ class NormalActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
+        val intent = Intent()
+        intent.putExtra("data_return", "Hello FirstActivity")
+        setResult(RESULT_OK, intent)
     }
 
 
