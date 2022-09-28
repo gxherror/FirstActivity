@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".FragmentActivity">
+    tools:context=".NewsContentActivity">
 
     <fragment
-        android:id="@+id/fragmentNewsTitle"
-        android:name="top.xherror.first_activity.NewsTitleFragment"
-        android:layout_width="0dp"
+        android:id="@+id/activityNewsContentFragment"
+        android:name="top.xherror.first_activity.NewsContentFragment"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_news_title" />
+        tools:layout="@layout/fragment_news_content" />
+
 
 </LinearLayout>
