@@ -13,6 +13,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import top.xherror.first_activity.fragment.NewsContentFragment
 import kotlin.math.log
 
 
@@ -97,7 +98,7 @@ class NewsTitleFragment : Fragment(){
 
     inner class NewsAdapter(private val newsList: List<News>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         private val name="NewsAdapter"
-        val fragment=NewsContentFragment()
+        val fragment= NewsContentFragment()
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val newsTitle: TextView = view.findViewById(R.id.newsTitle)
         }

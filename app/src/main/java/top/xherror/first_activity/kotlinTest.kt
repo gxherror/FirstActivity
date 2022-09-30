@@ -41,4 +41,5 @@ fun eatFruitUseApply(){
 
 fun main(){
     eatFruitUseApply()
+
 }

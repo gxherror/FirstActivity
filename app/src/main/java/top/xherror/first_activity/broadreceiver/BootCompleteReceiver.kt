@@ -1,4 +1,4 @@
-package top.xherror.first_activity
+package top.xherror.first_activity.broadreceiver
 
 import android.content.BroadcastReceiver
 import android.content.Context

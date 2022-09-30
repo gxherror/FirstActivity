@@ -52,7 +52,7 @@ class NormalActivity : BaseActivity() {
         val intent = Intent()
         intent.putExtra("data_return", "Hello FirstActivity")
         setResult(RESULT_OK, intent)
-        ActivityCollector.finishAll()
+        finishAll()
         //android.os.Process.killProcess(android.os.Process.myPid())
         //finish()
     }

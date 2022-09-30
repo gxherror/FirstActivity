@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import top.xherror.first_activity.databinding.ActivityNewsContentBinding
 
-class NewsContentActivity : AppCompatActivity() {
+class NewsContentActivity : BaseActivity() {
 
     companion object {
         fun actionStart(context: Context, newsTitle:String, newsContent:String){

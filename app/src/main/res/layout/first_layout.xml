@@ -78,7 +78,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@id/linearLayout2"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -90,16 +90,20 @@
             android:layout_height="wrap_content"
             android:text="to fragment activity"/>
 
+        <Button
+            android:id="@+id/firstLayoutButtonToBroadSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Broad Sender"/>
+
+        <Button
+            android:id="@+id/firstLayoutButtonToDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To DB"/>
+
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical"
-        android:background="@drawable/speechballoonright"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2"/>
 
     <ListView
         android:id="@+id/listView1"

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,6 +34,7 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("TTT",loadStringFromSP("test"))
         Log.d(tag,this.toString())
         Log.d(tag,"$taskId")
         val intentFilter =IntentFilter()
@@ -103,6 +105,14 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
             toSecondActivity.launch(intent)
             //startActivity(intent)
             //finish()
+        }
+
+        binding.firstLayoutButtonToBroadSender.setOnClickListener {
+            startActivity(Intent(this,SignInActivity::class.java))
+        }
+
+        binding.firstLayoutButtonToDB.setOnClickListener {
+            startActivity(Intent(this,DBActivity::class.java))
         }
 
         binding.button3.setOnClickListener {

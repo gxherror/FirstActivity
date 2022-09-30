@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import top.xherror.first_activity.databinding.ActivityFragmentBinding
 
- class FragmentActivity : AppCompatActivity() {
+ class FragmentActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val tag="FragmentActivityDebug"
