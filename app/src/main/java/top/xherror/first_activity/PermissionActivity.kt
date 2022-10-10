@@ -1,6 +1,7 @@
 package top.xherror.first_activity
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import top.xherror.first_activity.databinding.ActivityPermissionBinding
@@ -76,7 +78,9 @@ class PermissionActivity : AppCompatActivity() {
     protected fun  load(){
         contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null)?.apply {
             while (moveToNext()){
-                contactList.add("${getString(getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))}\n${getString(getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))}")
+                val name=getString(getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                val number=getString(getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                contactList.add("$name\n$number")
                 }
                 adapter.notifyDataSetChanged()
                 close()

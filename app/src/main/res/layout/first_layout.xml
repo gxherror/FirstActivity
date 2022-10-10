@@ -108,6 +108,18 @@
             android:layout_height="wrap_content"
             android:text="To DB"/>
 
+        <Button
+            android:id="@+id/firstLayoutButtonToNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Notification"/>
+
+        <Button
+            android:id="@+id/firstLayoutButtonToMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Media"/>
+
     </LinearLayout>
 
 

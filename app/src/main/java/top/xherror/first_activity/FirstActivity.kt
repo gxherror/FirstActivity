@@ -1,30 +1,19 @@
 package top.xherror.first_activity
 
-import android.app.Activity
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.SharedPreferences
-import android.content.pm.PackageManager
+import android.content.*
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
 import top.xherror.first_activity.databinding.FirstLayoutBinding
 
 class FirstActivity : BaseActivity(),View.OnClickListener{
+    val dbHelper=MyDataBaseHelper(this,"BookStore.db",2)
     private val tag="MainActivity"
     private val fruitlist=ArrayList<Fruit>()
     lateinit var timeChangeReceiver: TimeChangeReceiver
@@ -35,6 +24,7 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Log.d(tag,this.toString())
         Log.d(tag,"$taskId")
         val intentFilter =IntentFilter()
@@ -153,6 +143,16 @@ class FirstActivity : BaseActivity(),View.OnClickListener{
             intent.putExtra("extra_data","Hello DialogActivity")
             toDialogActivity.launch(intent)
         }
+
+        binding.firstLayoutButtonToNotification.setOnClickListener {
+            startActivity(Intent(this,NotificationActivity::class.java))
+        }
+
+
+        binding.firstLayoutButtonToMedia.setOnClickListener {
+            startActivity(Intent(this, MediaActivity::class.java))
+        }
+
     }
 
     override fun onClick(v1 :View?){

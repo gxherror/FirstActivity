@@ -1,6 +1,7 @@
 package top.xherror.first_activity
 
 import android.content.ContentValues
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -36,5 +37,20 @@ class DBActivity : BaseActivity() {
             //val cursor=db.rawQuery("SELECT * FROM Book ORDER BY price",null)
             //Toast.makeText(this,cursor.columnNames.toString(),Toast.LENGTH_SHORT).show()
         }
+
+        binding.activityDBQuery.setOnClickListener {
+            val uri= Uri.parse("content://top.xherror.first_activity.provider/book")
+            contentResolver.query(uri,null,null,null,null)?.let {
+                if(it.moveToFirst()){
+                    do {
+                        val id=it.getString(it.getColumnIndex("id"))
+                        val author=it.getString(it.getColumnIndex("author"))
+                        Toast.makeText(this,"$id+$author",Toast.LENGTH_SHORT).show()
+                    } while (it.moveToNext())
+                }
+            }
+
+        }
+
     }
 }
